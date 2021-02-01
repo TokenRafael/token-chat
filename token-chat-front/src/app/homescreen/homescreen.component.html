@@ -1,0 +1,16 @@
+<mat-card class="content">
+    <mat-card-header>
+        <img matCardAvatar src="assets/tokenlab_icon.png">
+        <mat-card-title>Token Chat</mat-card-title>
+        <mat-card-subtitle>Chat online da Tokenlab</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="monolith">
+        <button mat-raised-button (click)="create()" color="primary">Crie uma sala</button>
+        <h3 style="margin-top: 25px;">OU</h3>
+        <mat-form-field>
+            <mat-label>Código da Sala</mat-label>
+            <input matInput (keydown.enter)="join()" type="text" [(ngModel)]="roomId" placeholder="b966BHJ9fdbn">
+        </mat-form-field>
+        <button mat-raised-button (click)="join()" color="primary">Entre em uma sala</button>
+    </mat-card-content>
+</mat-card>

@@ -8,9 +8,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { HomescreenComponent } from './homescreen/homescreen.component';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [		AppComponent,
+      HomescreenComponent,
+      ChatComponent
+   ],
   imports: [
     BrowserModule,
     FormsModule,
