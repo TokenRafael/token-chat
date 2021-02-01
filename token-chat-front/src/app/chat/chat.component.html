@@ -1,7 +1,7 @@
 <mat-card class="content fullScreen">
   <mat-card-title-group>
-    <mat-card-title style="margin-top: 10px"
-      >Sala: {{ getRoomId() }}
+    <mat-card-title style="margin-top: 10px" >
+      {{ user }} @ {{ getRoomId() }} 
     </mat-card-title>
     <button
       mat-icon-button
@@ -13,7 +13,7 @@
       <mat-icon>content_copy</mat-icon>
     </button>
   </mat-card-title-group>
-  <mat-card-content class="fill">
+  <mat-card-content class="fill" style="margin-bottom: 0;">
     <mat-card
       class="fill monolith push scroll"
       style="background-color: rgb(206, 241, 255)"
@@ -28,6 +28,7 @@
         matInput
         matTextareaAutosize
         [(ngModel)]="message"
+        (keyup.enter)="sendMessage()"
         placeholder="Escreva sua mensagem"
       ></textarea>
     </mat-form-field>

@@ -1,38 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { MessageInfo } from '../message-info';
+import { SocketService } from '../socket.service';
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss'],
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, OnDestroy {
+  user = '';
   message = '';
-  msgs = [
-    {
-    sender: 'Peri',
-    id: '0',
-    content: `Bora pra dailyyyy!!!`,
-    date: Date.now(),
-    },
-    {
-    sender: 'Rafael',
-    id: '1',
-    content: `Boraaaaa`,
-    date: Date.now(),
-    },
-  ];
+  msgs: MessageInfo[] = [];
+  msgSub: Subscription;
 
-  constructor() {}
+  constructor(private socket: SocketService) {}
 
-  ngOnInit() {
-    console.log(this.msgs);
+  ngOnInit(): void {
+    this.user = this.socket.username;
+    this.msgSub = this.socket.messages$.subscribe((newMsgs: MessageInfo[]) => {
+      this.msgs = newMsgs;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.msgSub.unsubscribe();
   }
 
   getRoomId(): string {
-    return 'roomID::b894ByuB';
+    return this.socket.roomId;
   }
 
   sendMessage(): void {
+    this.socket.send(this.message);
     this.message = '';
   }
 }

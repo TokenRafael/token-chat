@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Subject } from 'rxjs';
-import * as io from 'socket.io-client';
+import { BehaviorSubject} from 'rxjs';
+import { io } from 'socket.io-client';
 import { MessageInfo } from './message-info';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SocketService {
-  socket: SocketIOClient.Socket;
+  socket: any;
+
+  username: string;
 
   connected$ = new BehaviorSubject<boolean>(false);
   roomId: string;
@@ -23,6 +25,7 @@ export class SocketService {
 
   connect(): void {
     this.socket = io('http://localhost:9000');
+    this.connected$.next(true);
 
     this.socket.on('connect', () => {
       this.connected$.next(true);
@@ -48,14 +51,16 @@ export class SocketService {
   }
 
   create(username: string): void {
+    this.username = username;
     this.socket.emit('create', username);
   }
 
   join(id: string, username: string): void {
+    this.username = username;
     this.socket.emit('join', id, username);
   }
 
-  send(msg: string, id: string): void {
-    this.socket.emit('message', msg, id);
+  send(msg: string): void {
+    this.socket.emit('sendMessage', msg, this.roomId);
   }
 }

@@ -1,6 +1,7 @@
 import { getLocaleFirstDayOfWeek } from '@angular/common';
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { MessageInfo } from '../message-info';
+import { SocketService } from '../socket.service';
 
 @Component({
   selector: 'app-message',
@@ -11,12 +12,11 @@ export class MessageComponent implements OnInit {
 
   @Input() msg: MessageInfo;
   @HostBinding() class: string;
-  id = '1';
 
-  constructor() { }
+  constructor(private socket: SocketService) { }
 
   ngOnInit() {
-    this.class = this.msg.id === this.id ? 'righty' : 'lefty';
+    this.class = this.msg.id === this.socket.socket.id ? 'righty' : 'lefty';
   }
 
 }

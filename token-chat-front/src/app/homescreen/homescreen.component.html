@@ -3,9 +3,19 @@
     <img matCardAvatar src="assets/tokenlab_icon.png" />
     <mat-card-title>Token Chat</mat-card-title>
     <mat-card-subtitle>Chat online da Tokenlab</mat-card-subtitle>
+    <mat-form-field>
+      <mat-label>Seu nome</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="name"
+        placeholder="John Cena"
+      />
+    </mat-form-field>
   </mat-card-header>
   <mat-card-content class="monolith">
-    <button mat-raised-button (click)="create()" color="primary">
+    <h3>{{ connected$ | async }}</h3>
+    <button mat-raised-button (click)="create()" color="primary" [disabled]="!connected$ | async">
       Crie uma sala
     </button>
     <h3 style="margin-top: 25px">OU</h3>
@@ -19,7 +29,7 @@
         placeholder="b966BHJ9fdbn"
       />
     </mat-form-field>
-    <button mat-raised-button (click)="join()" color="primary">
+    <button mat-raised-button (click)="join()" color="primary" [disabled]="!connected$ | async">
       Entre em uma sala
     </button>
   </mat-card-content>
