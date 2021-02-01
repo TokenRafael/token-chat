@@ -1,0 +1,10 @@
+<div class="message" [class]="class">
+  <div class="head">
+    <strong>{{ msg.sender }}</strong>
+    <p>{{ msg.date | date: 'shortTime' }}</p>
+  </div>
+  <hr>
+  <div class="content">
+    <p>{{ msg.content }}</p>
+  </div>
+</div>

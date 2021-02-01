@@ -1,0 +1,29 @@
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.lefty{
+  background-color: rgba(149, 149, 255, 0.801);
+}
+.righty {
+  background-color: whitesmoke;
+}
+p {
+  margin: 0;
+}
+.content {
+  margin: 0
+}
+hr {
+  margin: 2px;
+}
+
+:host{
+  width: 60%;
+  margin: 5px 0;
+}
+.message {
+  padding: 10px;
+  border-radius: 10px;
+}

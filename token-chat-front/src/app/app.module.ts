@@ -14,11 +14,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HomescreenComponent } from './homescreen/homescreen.component';
 import { ChatComponent } from './chat/chat.component';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
-  declarations: [		AppComponent,
+  declarations: [			AppComponent,
       HomescreenComponent,
-      ChatComponent
+      ChatComponent,
+      MessageComponent
    ],
   imports: [
     BrowserModule,

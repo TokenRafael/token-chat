@@ -20,17 +20,17 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    .push {
-      justify-content: end;
-    }
     .lefty {
-      align-self: flex-end;
-    }
-    .right {
       align-self: flex-start;
+    }
+    .righty {
+      align-self: flex-end;
     }
   }
 }
+    .push {
+      justify-content: flex-end !important
+    }
 .fullScreen {
   height: 85vh;
   @media screen and (max-width: 600px) {
