@@ -1,3 +1,43 @@
-<p>
-  chat works!
-</p>
+<mat-card class="content fullScreen">
+  <mat-card-title-group>
+    <mat-card-title style="margin-top: 10px"
+      >Sala: {{ getRoomId() }}
+    </mat-card-title>
+    <button
+      mat-icon-button
+      [cdkCopyToClipboard]="getRoomId()"
+      #tooltip="matTooltip"
+      matTooltip="Copiar código da sala"
+      matTooltipPosition="above"
+    >
+      <mat-icon>content_copy</mat-icon>
+    </button>
+  </mat-card-title-group>
+  <mat-card-content class="fill">
+    <mat-card
+      class="fill monolith push scroll"
+      style="background-color: rgb(206, 241, 255)"
+    >
+      <p *ngFor="let msg of msgs">{{ msg }}</p>
+    </mat-card>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <mat-form-field floatPlaceholder="auto" style="width: 70%">
+      <textarea
+        matInput
+        matTextareaAutosize
+        [(ngModel)]="message"
+        placeholder="Escreva sua mensagem"
+      ></textarea>
+    </mat-form-field>
+    <button
+      mat-fab
+      color="primary"
+      (click)="sendMessage()"
+      style="margin-left: 30px"
+    >
+      <mat-icon>send</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

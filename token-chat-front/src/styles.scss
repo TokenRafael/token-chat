@@ -1,16 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: rgb(246, 246, 246);
+}
 .content {
   max-width: 600px;
   margin: 20px auto;
+  @media screen and (max-width: 600px) {
+    margin: 0
+  }
   .monolith {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    .push{
+    .push {
       justify-content: end;
     }
     .lefty {
@@ -20,4 +30,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
       align-self: flex-start;
     }
   }
+}
+.fullScreen {
+  height: 85vh;
+  @media screen and (max-width: 600px) {
+    height: 100vh;
+  }
+}
+.fill {
+  height: 80%;
+}
+.scroll {
+  overflow-y: scroll;
 }
