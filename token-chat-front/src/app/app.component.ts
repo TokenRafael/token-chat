@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'token-chat-front';
+  roomId = '';
+
+  create(): void {
+
+  }
+
+  join(): void {
+
+  }
 }
