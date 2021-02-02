@@ -23,6 +23,12 @@ io.on('connection', socket => {
     rooms.push(roomId);
     console.log(`${socket.id} joined room ${roomId}`);
     socket.emit('roomId', roomId);
+    socket.emit('message', {
+      id: 'System',
+      sender: 'Sys',
+      content: `${username} creted the room`,
+      date: Date.now()
+    })
   })
 
   socket.on('join', (id, username) => {
@@ -34,6 +40,12 @@ io.on('connection', socket => {
     socket.join(id)
     console.log(`${socket.id} joined room ${id}`)
     socket.emit('roomId', id);
+    io.in(id).emit('message', {
+      id: 'System',
+      sender: 'Sys',
+      content: `${username} joined the room`,
+      date: Date.now()
+    })
   })
 
   socket.on('sendMessage', (msgCont, roomId) => {
