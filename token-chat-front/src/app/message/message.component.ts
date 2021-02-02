@@ -15,7 +15,11 @@ export class MessageComponent implements OnInit {
 
   constructor(private socket: SocketService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    if (this.msg.id === 'System') {
+      this.class = 'sys';
+      return;
+    }
     this.class = this.msg.id === this.socket.socket.id ? 'righty' : 'lefty';
   }
 

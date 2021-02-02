@@ -14,7 +14,6 @@
     </mat-form-field>
   </mat-card-header>
   <mat-card-content class="monolith">
-    <h3>{{ connected$ | async }}</h3>
     <button mat-raised-button (click)="create()" color="primary" [disabled]="!connected$ | async">
       Crie uma sala
     </button>
